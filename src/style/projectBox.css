@@ -1,6 +1,6 @@
 .projeBox{
     width: 250px;
-    margin-left:0;
+    margin-left:0px !important;
 }
 .modal-body{
     padding: 0;
