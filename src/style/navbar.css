@@ -76,7 +76,7 @@ button:focus:not(:focus-visible) {
 }
 @media (max-width: 768px) {
     .navbarLogo{
-        margin-left: 19%;
+        margin-left: 10%;
         width: 250px !important;
         height: 100px !important;
     }
