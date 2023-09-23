@@ -15,7 +15,7 @@ function Services() {
     <div id='hizmetlerimiz'>
         <h1 className='hizmetler'>Hizmetlerimiz</h1>
         <div className='' style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", maxWidth: "80%", margin: "0 auto" }}>
-            <ServicesBox img={aplikasyon} name={"Aplikasyon"}/>
+            <ServicesBox img={aplikasyon} name={"Yapı Aplikasyon"}/>
             <ServicesBox img={hazine} name={"Hazine Arazileri Danışmanlık"}/>
             <ServicesBox img={ifraz} name={"İfraz"}/>
             <ServicesBox img={insaat} name={"İnsaat"}/>
