@@ -9,6 +9,7 @@ import kadastro from "../img/cins.jpeg"
 import kamulastirma from "../img/kamulastirma.jpeg"
 import parselasyon from "../img/parselasyon.webp"
 import yolaTerk from "../img/yolaTerk.jpg"
+import fidan from '../img/fidan.jpeg'
 
 function Services() {
   return (
@@ -23,6 +24,7 @@ function Services() {
             <ServicesBox img={kamulastirma} name={"Kamulaştırma"}/>
             <ServicesBox img={parselasyon} name={"Parselasyon"}/>
             <ServicesBox img={yolaTerk} name={"Yola Terk"}/>
+            <ServicesBox img={fidan} name={"Fidan Dikim Yeri İşaretleme"}/>
         </div>
     </div>
   )
