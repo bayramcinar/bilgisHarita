@@ -19,7 +19,7 @@ function Services() {
             <ServicesBox img={hazine} name={"Hazine Arazileri Danışmanlık"}/>
             <ServicesBox img={ifraz} name={"İfraz"}/>
             <ServicesBox img={insaat} name={"İnsaat"}/>
-            <ServicesBox img={kadastro} name={"Kadastro"}/>
+            <ServicesBox img={kadastro} name={"Cins Değişikliği "}/>
             <ServicesBox img={kamulastirma} name={"Kamulaştırma"}/>
             <ServicesBox img={parselasyon} name={"Parselasyon"}/>
             <ServicesBox img={yolaTerk} name={"Yola Terk"}/>
