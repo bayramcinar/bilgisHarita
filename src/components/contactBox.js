@@ -6,7 +6,7 @@ import AOS from 'aos'
 
 function ContactBox({ logo, text, name, link }) {
   useEffect(()=>{
-    AOS.init({duration: 2000})
+    AOS.init({duration: 1500})
   },[])
   const content = link ? (
     <Link data-aos="zoom-in" target='_blank' to={link} className='contactBox'>
