@@ -24,7 +24,6 @@ function Projects() {
             <ProjectBox video={video6} name={"Çiftlik, Çardak Köyü hisseye göre tarla bölme işlemi."}/>
             <ProjectBox video={video7} name={"Erdemli Çanakçı Köyü'nde yerinde alım yaparak arazinin kullanımına uygun şekilde böldük ve 2400 m2 alan üzerindeki mevcut havuza ek 1500 m2 havuz yeri ayırdık."}/>
             <ProjectBox video={video8} name={"Altay Köyü'ne yapılacak olan tavuk çiftliği projesi için kot alımı gerçekleştirdik. "}/>
-             <ProjectBox video={video9} name={"Fidan dikim yeri işaretleme "}/>
       </div>
     </div>
   )
