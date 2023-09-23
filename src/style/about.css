@@ -13,7 +13,9 @@
 .aboutPhoto{
     width: 100%;
 }
-
+#hakkımızda{
+    margin: 30px;
+}
 @media (max-width: 768px) {
     #hakkımızda{
         padding: 30px;
