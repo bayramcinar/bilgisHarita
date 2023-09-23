@@ -7,7 +7,7 @@ import AOS from 'aos'
 
 function ProjectBox({video,name}) {
   useEffect(()=>{
-    AOS.init({duration: 2500})
+    AOS.init({duration: 2000})
   },[])
     const [show, setShow] = useState(false);
 
