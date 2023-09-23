@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import { Link } from 'react-router-dom';
 import './App.css';
+import About from './components/about';
+import Contact from './components/contact';
+import Footer from './components/footer';
+import Home from './components/home';
+import Navbar from './components/navbar';
+import Projects from './components/projects';
+import Services from './components/services';
+import wp from "../src/img/whatsapp.png"
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <Navbar/>
+        <Home/>
+        <About/>
+        <Services/>
+        <Projects/>
+        <Contact/>
+        <Footer/>
+        <Link target='_blank' to={"https://wa.me/05395103851"}><img className='whatsapp' src={wp}></img></Link>
     </div>
   );
 }

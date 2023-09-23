@@ -1,0 +1,36 @@
+.footer{
+    background-color: #3085C3;
+}
+.footerImg{
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    width: 70%;
+    margin-left: 15%;
+}
+.footerContact{
+    font-size: 15px;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    margin-top: 8%;
+}
+.footerRow{
+    justify-content: space-around;
+}
+.footerBottom{
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.footerCopy{
+    background-color: #1c5bb4;
+}
+@media (max-width: 768px) {
+    .footerContact{
+        padding: 20px;
+        padding-top: 0;
+    }
+}

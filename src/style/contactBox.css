@@ -1,0 +1,38 @@
+.contactBox{
+    width: 200px;
+    height: 220px;
+    background-color: #edf1f7;
+    margin: 20px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+#logo,
+.contactBoxLogo{
+    width: 100px !important;
+    color: #3085C3 !important;
+}
+.contactBoxText{
+    color: #000;
+    font-size: 16px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    max-width: 200px; 
+    white-space: normal;
+}
+.contactBoxLogo{
+    margin-left: auto;
+    margin-right: auto;
+}
+#logo{
+    padding: 8px;
+}
+.orta{
+    margin-top: auto;
+    margin-bottom: auto;
+}

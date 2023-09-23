@@ -1,0 +1,21 @@
+.hakkımızda{
+    color: #3085C3;
+    font-weight: 600;
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.aboutTextArea{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.aboutPhoto{
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    #hakkımızda{
+        padding: 30px;
+    }
+}

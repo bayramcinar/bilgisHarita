@@ -1,0 +1,19 @@
+.contactTitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #3085C3;
+}
+.haritaArea{
+    padding: 30px;
+}
+.logoArea{
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .harita{
+        width: 100%;
+    }
+}
