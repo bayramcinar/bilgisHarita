@@ -1,6 +1,6 @@
 import React from 'react'
 import "../style/about.css"
-import aboutLogo from "../img/logo4.png"
+import aboutLogo from "../img/profil.jpeg"
 
 function About() {
   return (
