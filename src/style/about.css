@@ -10,9 +10,17 @@
     margin-top: auto;
     margin-bottom: auto;
 }
-.aboutPhoto{
-    width: 100%;
+.aboutPhotoArea{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
+.aboutPhoto {
+    width: 402px;
+    height: 550px;
+    margin: 30px;
+    border-radius: 10px !important;
+    box-shadow: 5px 5px 10px #000000c2;
 #hakkımızda{
     margin: 30px;
 }
