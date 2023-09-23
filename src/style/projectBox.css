@@ -1,6 +1,10 @@
 .projeBox{
     width: 250px;
+<<<<<<< HEAD
     margin-right: 12px;
+=======
+    margin-left:0px !important;
+>>>>>>> 82f6ecd7c5779c1d721ea93671ad3f570ea7e46d
 }
 .modal-body{
     padding: 0;

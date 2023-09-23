@@ -5,7 +5,7 @@ import AOS from 'aos'
 
 function ServicesBox({img,name}) {
   useEffect(()=>{
-    AOS.init({duration: 2500})
+    AOS.init({duration: 1500})
   },[])
   return (
     <div data-aos="zoom-in">
