@@ -4,7 +4,9 @@
         justify-content: flex-end;
     }
 }
-
+nav{
+    background: linear-gradient(to bottom, rgba(174, 210, 255, 0.8), rgba(228, 241, 255, 0.8)) !important;
+}
 .navbarLogo{
     margin-left: 150px;
 }
@@ -33,7 +35,6 @@
     position: relative; 
 }
 .navbar{
-    background: rgba(250, 250, 250, 0.9) !important;
     position: sticky;
     top: 0;
     z-index: 1000;
