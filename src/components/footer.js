@@ -7,7 +7,7 @@ function Footer() {
   return (
     <div className='footer'>
       <div className='row footerRow' >
-        <div className='col-lg-6 col-sm-12'>
+        <div className='col-lg-6 col-sm-12' style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
             <img className='footerImg' src={footerLogo}></img>
         </div>
         <div className='col-lg-6 col-sm-12'>
