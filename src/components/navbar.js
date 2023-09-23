@@ -12,7 +12,7 @@ function Navbar() {
   return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
-            <img src={logo} alt="Logo" width="300" height="120" class="d-inline-block align-text-top navbarLogo"></img>
+            <img src={logo} alt="Logo" width="350" height="120" class="d-inline-block align-text-top navbarLogo"></img>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
             </button>
