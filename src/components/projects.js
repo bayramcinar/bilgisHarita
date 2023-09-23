@@ -18,7 +18,7 @@ function Projects() {
       <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", maxWidth: "80%", margin: "0 auto" }}>
             <ProjectBox video={video1} name={"Çiftlik, Çardak Köyü hisseye göre tarla bölme işlemi."}/>
             <ProjectBox video={video2} name={"Hüsniye köyünde devam eden tavuk çiftliği projesi için kazı dolgu hesabını yaptık ve çiftlik köşelerini aplike ettik."}/>
-            <ProjectBox video={video3} name={"Kaba inşaatını ve projesini üstlendiğimiz Gökhan abimin inşaatının bina köşelerini aplike ettik. Bodrum ve temel kazısını gerçekleştirdik. "}/>
+            <ProjectBox video={video3} name={"Kaba inşaatını ve projesini üstlendiğimiz inşaatının bina köşelerini aplike ettik. Bodrum ve temel kazısını gerçekleştirdik. "}/>
             <ProjectBox video={video4} name={"#darboğaz köyünde İnşaat projesi için kot alımı gerçekleştirdik. #ulukışla #haritamühendisliği #inşaat #plan #proje #plankote"}/>
             <ProjectBox video={video5} name={"Altay Köyü'ne yapılacak olan tavuk çiftliği projesi için kot alımı gerçekleştirdik."}/>
             <ProjectBox video={video6} name={"Çiftlik, Çardak Köyü hisseye göre tarla bölme işlemi."}/>
