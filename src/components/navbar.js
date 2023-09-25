@@ -54,7 +54,7 @@ function Navbar() {
                             duration={100}
                             onClick={() => handleItemClick('hizmetlerimiz')}
                         >
-                            Hizmetlermiz
+                            Hizmetlerimiz
                     </Link>
                     </li>
                     <li className="nav-item">
