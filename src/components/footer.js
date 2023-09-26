@@ -10,7 +10,7 @@ function Footer() {
         <div className='col-lg-6 col-sm-12' style={{display:"flex",alignItems:"center",justifyContent:"center"}}>
             <img className='footerImg' src={footerLogo}></img>
         </div>
-        <div className='col-lg-6 col-sm-12' style={{display="flex",alignItems="center"}}>
+        <div className='col-lg-6 col-sm-12' style={{display:"flex",alignItems:"center"}}>
             <div className='footerContact'>
                 <h5>İLETİŞİM</h5>
                 <h6><i class="fa-solid fa-location-dot"></i> Kılan-Fatih Mah. Şehit Süleyman Polat Sok. 2 Ulukışla 51920, Niğde</h6>
