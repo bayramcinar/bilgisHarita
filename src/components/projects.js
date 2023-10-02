@@ -10,7 +10,6 @@ import video6 from '../img/6.mp4'
 import video7 from '../img/7.mp4'
 import video8 from '../img/8.mp4'
 import video9 from '../img/9.mp4'
-import video9 from '../img/fidan.jpeg'
 
 function Projects() {
   return (
