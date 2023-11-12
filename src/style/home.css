@@ -1,5 +1,6 @@
 .generalDiv{
     height: 600px;
+    scroll-margin: 20px;
 }
 .video {
     object-fit: cover;
