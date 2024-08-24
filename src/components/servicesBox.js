@@ -8,7 +8,7 @@ function ServicesBox({ img, name }) {
     AOS.init({ duration: 1500 });
   }, []);
   return (
-    <div data-aos="zoom-in" className="shadow-lg m-3">
+    <div data-aos="zoom-in" className="servicebox shadow-lg m-3">
       <div class="card">
         <div class="image-container">
           <img class="card-img-top" src={img} />

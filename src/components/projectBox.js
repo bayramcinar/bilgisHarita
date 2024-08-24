@@ -4,6 +4,7 @@ import "../style/projectBox.css";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import { FaPlay } from "react-icons/fa"; // Import play icon from react-icons
+import playerImage from "../img/image.png";
 
 function ProjectBox({ video, name }) {
   useEffect(() => {
@@ -27,14 +28,14 @@ function ProjectBox({ video, name }) {
         >
           <div className="image-container position-relative flex flex-col items-center justify-center">
             <video
-              className="my-auto mx-auto lg:mt-8 video w-[30vw]"
+              className="my-auto mx-auto video w-[20vw] "
               src={video}
               loop
               muted
               style={{ objectFit: "cover" }}
             ></video>
-
-            <div className="play-icon-overlay mt-6">
+            <img src={playerImage} className="w-[20vw]" />
+            <div className="play-icon-overlay">
               <FaPlay size={25} color="white" />
             </div>
           </div>

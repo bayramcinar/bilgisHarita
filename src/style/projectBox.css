@@ -10,15 +10,7 @@
 }
 .projectbox {
   margin: 15px;
-  width: 30vw;
-  background-image: url("../img/videoBg.png"); /* Ensure this path is correct */
-  background-size: cover; /* Ensure the image covers the element */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-}
-
-.card.projeBox:hover {
-  transform: scale(1.05);
+  width: 20vw;
 }
 
 .image-container {
