@@ -1,12 +1,25 @@
-*{
-    font-family: 'Lexend', sans-serif;
+* {
+  font-family: "Lexend", sans-serif;
 }
-.App{
-    max-width: 100vw;
+
+/* Genel scroll bar stilini tanımlayın */
+::-webkit-scrollbar {
+  width: 8px !important; /* Kaydırma çubuğunun genişliği */
 }
-.whatsapp{
-    width: 65px;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
+
+/* Kaydırma çubuğunun arka planını tanımlayın */
+::-webkit-scrollbar-track {
+  background: #f1f1f1 !important; /* Kaydırma çubuğunun arka plan rengi */
+  border-radius: 10px !important; /* Köşeleri yuvarlatma */
+}
+
+/* Kaydırma çubuğunun kendisini tanımlayın */
+::-webkit-scrollbar-thumb {
+  background: #888 !important; /* Kaydırma çubuğunun rengi */
+  border-radius: 10px !important; /* Köşeleri yuvarlatma */
+}
+
+/* Kaydırma çubuğunun üzerine gelindiğinde görünümünü tanımlayın */
+::-webkit-scrollbar-thumb:hover {
+  background: #555 !important; /* Hover rengi */
 }

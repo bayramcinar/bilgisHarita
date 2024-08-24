@@ -328,7 +328,15 @@ function ProjelerTable() {
                 .map((hizmet) => (
                   <TableRow key={hizmet.id}>
                     <TableCell>{hizmet.id}</TableCell>
-                    <TableCell>{hizmet.title}</TableCell>
+                    <TableCell
+                      style={{
+                        maxWidth: "250px",
+                        wordWrap: "break-word",
+                        whiteSpace: "normal",
+                      }}
+                    >
+                      {hizmet.title}
+                    </TableCell>
                     <TableCell>
                       {hizmet.fileMetadata?.url && (
                         <video

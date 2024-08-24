@@ -1,37 +1,37 @@
-.hakkımızda{
-    color: #3085C3;
-    font-weight: 600;
-    margin-bottom: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    scroll-margin: 20px;
+.hakkımızda {
+  color: #3085c3;
+  font-weight: 600;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-margin: 20px;
 }
-.aboutTextArea{
-    margin-top: auto;
-    margin-bottom: auto;
+.aboutTextArea {
+  margin-top: auto;
+  margin-bottom: auto;
 }
-.aboutPhotoArea{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.aboutPhotoArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .aboutPhoto {
-    width: 402px;
-    height: 550px;
-    margin: 30px;
-    border-radius: 10px !important;
-    box-shadow: 5px 5px 10px #000000c2;
+  width: 402px;
+  height: 550px;
+  margin: 30px;
+  border-radius: 10px !important;
+  box-shadow: 5px 5px 10px #000000c2;
 }
-#hakkımızda{
-    margin: 30px;
+#hakkımızda {
+  margin: 30px;
 }
 @media (max-width: 768px) {
-    #hakkımızda{
-        padding: 30px;
-    }
-    .aboutPhoto{
-        width: 325px;
-        height: 476px;
-    }
+  #hakkımızda {
+    padding: 10px;
+  }
+  .aboutPhoto {
+    width: 325px;
+    height: 476px;
+  }
 }

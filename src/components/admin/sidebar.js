@@ -22,6 +22,7 @@ import { CiLogout } from "react-icons/ci";
 function DashboardSidebar({ onSidebarClick }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [activeItem, setActiveItem] = useState(null); // State to track active item
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,6 +37,18 @@ function DashboardSidebar({ onSidebarClick }) {
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleItemClick = (item) => {
+    setActiveItem(item);
+    onSidebarClick(item);
+    if (isMobile) toggleSidebar(); // Close sidebar on mobile after item click
+  };
+
+  const getItemClassName = (item) => {
+    return `my-3 rounded-2xl shadow-md py-3 cursor-pointer ${
+      activeItem === item ? "bg-[#f0f2f4]" : "hover:bg-[#f0f2f4]"
+    } transition-all duration-300`;
   };
 
   return (
@@ -76,11 +89,8 @@ function DashboardSidebar({ onSidebarClick }) {
           </Box>
           <List>
             <ListItem
-              onClick={() => {
-                onSidebarClick("EditTexts");
-                toggleSidebar();
-              }}
-              className="my-3 rounded-2xl shadow-md py-3 cursor-pointer hover:bg-[#f0f2f4] transition-all duration-300"
+              onClick={() => handleItemClick("EditTexts")}
+              className={getItemClassName("EditTexts")}
             >
               <ListItemIcon>
                 <FaEdit style={{ fontSize: 24 }} />
@@ -88,11 +98,8 @@ function DashboardSidebar({ onSidebarClick }) {
               <ListItemText primary="Yazıları Düzenle" />
             </ListItem>
             <ListItem
-              className="my-3 rounded-2xl shadow-md py-3 cursor-pointer hover:bg-[#f0f2f4] transition-all duration-300"
-              onClick={() => {
-                onSidebarClick("ProjeTable");
-                toggleSidebar();
-              }}
+              onClick={() => handleItemClick("ProjeTable")}
+              className={getItemClassName("ProjeTable")}
             >
               <ListItemIcon>
                 <FaPlusCircle style={{ fontSize: 24 }} />
@@ -100,11 +107,8 @@ function DashboardSidebar({ onSidebarClick }) {
               <ListItemText primary="Proje Ekle" />
             </ListItem>
             <ListItem
-              className="my-3 rounded-2xl shadow-md py-3 cursor-pointer hover:bg-[#f0f2f4] transition-all duration-300"
-              onClick={() => {
-                onSidebarClick("HizmetTable");
-                toggleSidebar();
-              }}
+              onClick={() => handleItemClick("HizmetTable")}
+              className={getItemClassName("HizmetTable")}
             >
               <ListItemIcon>
                 <FaCogs style={{ fontSize: 24 }} />
@@ -112,11 +116,8 @@ function DashboardSidebar({ onSidebarClick }) {
               <ListItemText primary="Hizmet Ekle" />
             </ListItem>
             <ListItem
-              className="my-3 rounded-2xl shadow-md py-3 cursor-pointer hover:bg-[#f0f2f4] transition-all duration-300"
-              onClick={() => {
-                onSidebarClick("Contact");
-                toggleSidebar();
-              }}
+              onClick={() => handleItemClick("ContactTable")}
+              className={getItemClassName("ContactTable")}
             >
               <ListItemIcon>
                 <FaEnvelope style={{ fontSize: 24 }} />
@@ -124,11 +125,8 @@ function DashboardSidebar({ onSidebarClick }) {
               <ListItemText primary="İletişim" />
             </ListItem>
             <ListItem
-              className="my-3 rounded-2xl shadow-md py-3 cursor-pointer hover:bg-[#f0f2f4] transition-all duration-300"
-              onClick={() => {
-                onSidebarClick("Logout");
-                toggleSidebar();
-              }}
+              onClick={() => handleItemClick("Logout")}
+              className={getItemClassName("Logout")}
             >
               <ListItemIcon>
                 <CiLogout style={{ fontSize: 24 }} />
@@ -155,8 +153,8 @@ function DashboardSidebar({ onSidebarClick }) {
         </Box>
         <List>
           <ListItem
-            onClick={() => onSidebarClick("EditTexts")}
-            className="my-3 rounded-2xl shadow-md py-3 cursor-pointer hover:bg-[#f0f2f4] transition-all duration-300"
+            onClick={() => handleItemClick("EditTexts")}
+            className={getItemClassName("EditTexts")}
           >
             <ListItemIcon>
               <FaEdit style={{ fontSize: 24 }} />
@@ -164,8 +162,8 @@ function DashboardSidebar({ onSidebarClick }) {
             <ListItemText primary="Yazıları Düzenle" />
           </ListItem>
           <ListItem
-            className="my-3 rounded-2xl shadow-md py-3 cursor-pointer hover:bg-[#f0f2f4] transition-all duration-300"
-            onClick={() => onSidebarClick("ProjeTable")}
+            onClick={() => handleItemClick("ProjeTable")}
+            className={getItemClassName("ProjeTable")}
           >
             <ListItemIcon>
               <FaPlusCircle style={{ fontSize: 24 }} />
@@ -173,8 +171,8 @@ function DashboardSidebar({ onSidebarClick }) {
             <ListItemText primary="Proje Ekle" />
           </ListItem>
           <ListItem
-            className="my-3 rounded-2xl shadow-md py-3 cursor-pointer hover:bg-[#f0f2f4] transition-all duration-300"
-            onClick={() => onSidebarClick("HizmetTable")}
+            onClick={() => handleItemClick("HizmetTable")}
+            className={getItemClassName("HizmetTable")}
           >
             <ListItemIcon>
               <FaCogs style={{ fontSize: 24 }} />
@@ -182,8 +180,8 @@ function DashboardSidebar({ onSidebarClick }) {
             <ListItemText primary="Hizmet Ekle" />
           </ListItem>
           <ListItem
-            className="my-3 rounded-2xl shadow-md py-3 cursor-pointer hover:bg-[#f0f2f4] transition-all duration-300"
-            onClick={() => onSidebarClick("Contact")}
+            onClick={() => handleItemClick("ContactTable")}
+            className={getItemClassName("ContactTable")}
           >
             <ListItemIcon>
               <FaEnvelope style={{ fontSize: 24 }} />
@@ -191,8 +189,8 @@ function DashboardSidebar({ onSidebarClick }) {
             <ListItemText primary="İletişim" />
           </ListItem>
           <ListItem
-            className="my-3 rounded-2xl shadow-md py-3 cursor-pointer hover:bg-[#f0f2f4] transition-all duration-300"
-            onClick={() => onSidebarClick("Logout")}
+            onClick={() => handleItemClick("Logout")}
+            className={getItemClassName("Logout")}
           >
             <ListItemIcon>
               <CiLogout style={{ fontSize: 24 }} />

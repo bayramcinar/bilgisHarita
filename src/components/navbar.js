@@ -22,9 +22,9 @@ function Navbar() {
         <img
           src={logo}
           alt="Logo"
+          className="object-contain w-28 lg:w-64"
           width="400"
           height="120"
-          className="object-contain"
         />
         <button
           className="lg:hidden text-white"

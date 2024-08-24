@@ -28,7 +28,7 @@ function Services() {
   }, []);
 
   return (
-    <div id="hizmetlerimiz ">
+    <div id="projelerimiz">
       <h1 className="hizmetler text-base lg:text-2xl  my-4">Projelerimiz</h1>
       <div
         className="mb-8 mx-auto"

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import DashboardSidebar from "./sidebar";
 import HizmetTable from "./hizmetlerTable";
 import ProjelerTable from "./projelerTable";
+import ContactTable from "./iletişimTable";
 
 function Dashboard() {
   const [selectedComponent, setSelectedComponent] = useState("");
@@ -23,6 +24,7 @@ function Dashboard() {
   }
 
   const handleSidebarClick = (component) => {
+    console.log(component);
     setSelectedComponent(component);
   };
 
@@ -33,6 +35,7 @@ function Dashboard() {
         <div className="flex-1 p-4">
           {selectedComponent === "HizmetTable" && <HizmetTable />}
           {selectedComponent === "ProjeTable" && <ProjelerTable />}
+          {selectedComponent === "ContactTable" && <ContactTable />}
         </div>
       )}
     </div>
