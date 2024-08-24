@@ -28,13 +28,13 @@ function ProjectBox({ video, name }) {
         >
           <div className="image-container position-relative flex flex-col items-center justify-center">
             <video
-              className="my-auto mx-auto video w-[20vw] "
+              className="my-auto mx-auto video w-full lg:w-[20vw] "
               src={video}
               loop
               muted
               style={{ objectFit: "cover" }}
             ></video>
-            <img src={playerImage} className="w-[20vw]" />
+            <img src={playerImage} className="lg:w-[20vw] w-full" />
             <div className="play-icon-overlay">
               <FaPlay size={25} color="white" />
             </div>

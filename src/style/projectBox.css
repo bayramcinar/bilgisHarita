@@ -61,9 +61,6 @@
   transform: scale(1.2);
 }
 @media (max-width: 768px) {
-  .projectbox .video {
-    width: 200px;
-  }
   .projectbox {
     width: 350px;
     height: 250px;
