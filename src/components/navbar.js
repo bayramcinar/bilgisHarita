@@ -5,9 +5,15 @@ import "../style/navbar.css";
 
 function Navbar() {
   const [activeItem, setActiveItem] = useState("");
+  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu visibility
 
   const handleItemClick = (item) => {
     setActiveItem(item);
+    setIsMenuOpen(false); // Close the menu when an item is clicked
+  };
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen); // Toggle menu visibility
   };
 
   return (
@@ -24,7 +30,8 @@ function Navbar() {
           className="lg:hidden text-white"
           type="button"
           aria-controls="navbarMenu"
-          aria-expanded="false"
+          aria-expanded={isMenuOpen}
+          onClick={toggleMenu} // Toggle menu visibility on click
         >
           <svg
             className="w-6 h-6"
@@ -37,7 +44,9 @@ function Navbar() {
               strokeLinecap="round"
               strokeLinejoin="round"
               strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
+              d={
+                isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"
+              } // Change icon based on menu state
             ></path>
           </svg>
         </button>
@@ -105,7 +114,9 @@ function Navbar() {
         </div>
         <div
           id="navbarMenu"
-          className="lg:hidden absolute top-16 left-0 w-full bg-gray-800 text-white flex flex-col items-center space-y-4 p-4"
+          className={`lg:hidden absolute top-16 left-0 w-full bg-gray-800 text-white flex flex-col items-center space-y-4 p-4 ${
+            isMenuOpen ? "block" : "hidden"
+          }`} // Show or hide based on menu state
         >
           <Link
             className={`nav-link ${

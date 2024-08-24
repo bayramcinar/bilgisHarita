@@ -331,11 +331,11 @@ function ProjelerTable() {
                     <TableCell>{hizmet.title}</TableCell>
                     <TableCell>
                       {hizmet.fileMetadata?.url && (
-                        <img
+                        <video
                           src={hizmet.fileMetadata.url}
                           alt={hizmet.fileMetadata.name}
                           style={{ width: "100px", height: "auto" }}
-                        />
+                        ></video>
                       )}
                     </TableCell>
                     <TableCell>
@@ -403,11 +403,11 @@ function ProjelerTable() {
               {newHizmetImage && (
                 <div>
                   <br />
-                  <img
+                  <video
                     src={newHizmetImage}
                     alt="Uploaded"
                     className="h-24 w-24"
-                  />
+                  ></video>
                   <button
                     className="mt-2 px-3 py-1 bg-red-500 text-white rounded-md"
                     onClick={handleRemoveImage}

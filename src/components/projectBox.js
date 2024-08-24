@@ -3,6 +3,7 @@ import { Modal, ModalHeader, ModalBody } from "reactstrap";
 import "../style/projectBox.css";
 import "aos/dist/aos.css";
 import AOS from "aos";
+import { FaPlay } from "react-icons/fa"; // Import play icon from react-icons
 
 function ProjectBox({ video, name }) {
   useEffect(() => {
@@ -16,23 +17,29 @@ function ProjectBox({ video, name }) {
 
   return (
     <>
-      <div data-aos="zoom-in">
-        <div className="card projeBox" onClick={handleShow}>
-          <div className="image-container">
+      <div
+        data-aos="zoom-in "
+        className="projectbox rounded-lg p-3 flex items-center justify-center flex-col my-3 shadow-lg"
+      >
+        <div
+          className="card projeBox flex flex-col items-center justify-center"
+          onClick={handleShow}
+        >
+          <div className="image-container position-relative flex flex-col items-center justify-center">
             <video
-              className="video"
+              className="my-auto mx-auto lg:mt-8 video w-[30vw]"
               src={video}
               loop
               muted
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
+              style={{ objectFit: "cover" }}
             ></video>
-          </div>
-          <div className="card-body">
-            <h5 className="card-text" style={{ width: "100%" }}>
-              {name}
-            </h5>
+
+            <div className="play-icon-overlay mt-6">
+              <FaPlay size={25} color="white" />
+            </div>
           </div>
         </div>
+        <h5 className="text-center text-xs lg:text-sm">{name}</h5>
       </div>
 
       <Modal centered isOpen={show} toggle={handleClose}>
@@ -48,7 +55,7 @@ function ProjectBox({ video, name }) {
             muted
             style={{ width: "100%", height: "100%" }}
           ></video>
-          <h1 className="text-xl text-center my-3">{name}</h1>
+          <h1 className="text-sm text-center my-3">{name}</h1>
         </ModalBody>
       </Modal>
     </>

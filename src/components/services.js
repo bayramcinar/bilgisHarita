@@ -29,7 +29,7 @@ function Services() {
 
   return (
     <div id="hizmetlerimiz">
-      <h1 className="hizmetler text-2xl">Hizmetlerimiz</h1>
+      <h1 className="hizmetler text-base lg:text-2xl my-4">Hizmetlerimiz</h1>
       <div
         style={{
           display: "flex",

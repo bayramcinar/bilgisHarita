@@ -1,24 +1,24 @@
-import React,{useEffect}from 'react'
-import "../style/servicesBox.css"
-import "aos/dist/aos.css"
-import AOS from 'aos'
+import React, { useEffect } from "react";
+import "../style/servicesBox.css";
+import "aos/dist/aos.css";
+import AOS from "aos";
 
-function ServicesBox({img,name}) {
-  useEffect(()=>{
-    AOS.init({duration: 1500})
-  },[])
+function ServicesBox({ img, name }) {
+  useEffect(() => {
+    AOS.init({ duration: 1500 });
+  }, []);
   return (
-    <div data-aos="zoom-in">
-      <div class="card" >
-      <div class="image-container">
-        <img class="card-img-top" src={img} />
+    <div data-aos="zoom-in" className="shadow-lg m-3">
+      <div class="card">
+        <div class="image-container">
+          <img class="card-img-top" src={img} />
         </div>
         <div class="card-body">
-            <h5 class="card-title">{name}</h5>
+          <h5 class="card-title">{name}</h5>
         </div>
-        </div>
+      </div>
     </div>
-  )
+  );
 }
 
-export default ServicesBox
+export default ServicesBox;

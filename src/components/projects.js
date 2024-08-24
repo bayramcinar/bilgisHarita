@@ -28,15 +28,15 @@ function Services() {
   }, []);
 
   return (
-    <div id="hizmetlerimiz">
-      <h1 className="hizmetler text-2xl">Projelerimiz</h1>
+    <div id="hizmetlerimiz ">
+      <h1 className="hizmetler text-base lg:text-2xl  my-4">Projelerimiz</h1>
       <div
+        className="mb-8 mx-auto"
         style={{
           display: "flex",
           flexWrap: "wrap",
           justifyContent: "center",
           maxWidth: "80%",
-          margin: "0 auto",
         }}
       >
         {loading ? (
