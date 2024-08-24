@@ -1,93 +1,176 @@
-import React, { useState } from 'react';
-import logo from "../img/logo4.png"
-import { Link } from 'react-scroll';
-import "../style/navbar.css"
+import React, { useState } from "react";
+import logo from "../img/logo4.png";
+import { Link } from "react-scroll";
+import "../style/navbar.css";
 
 function Navbar() {
-    const [activeItem, setActiveItem] = useState(""); 
+  const [activeItem, setActiveItem] = useState("");
 
-    const handleItemClick = (item) => {
-        setActiveItem(item);
-    };
+  const handleItemClick = (item) => {
+    setActiveItem(item);
+  };
+
   return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-        <div className="container-fluid">
-            <img src={logo} alt="Logo" width="400" height="120" class="d-inline-block align-text-top navbarLogo"></img>
-            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#bar" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span className="navbar-toggler-icon"></span>
-            </button>
-            <div className="collapse navbar-collapse" id="bar">
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                    <Link
-                            className='nav-link'
-                            activeClass="active"
-                            to="anasayfa"
-                            spy={true}
-                            smooth={true}
-                            duration={100}
-                            onClick={() => handleItemClick('anasayfa')}
-                        >
-                            Ana Sayfa
-                    </Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link
-                            className='nav-link'
-                            activeClass="active"
-                            to="hakkımızda"
-                            spy={true}
-                            smooth={true}
-                            duration={100}
-                            onClick={() => handleItemClick('hakkımızda')}
-                        >
-                            Hakkımızda
-                    </Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link
-                            className='nav-link'
-                            activeClass="active"
-                            to="hizmetlerimiz"
-                            spy={true}
-                            smooth={true}
-                            duration={100}
-                            onClick={() => handleItemClick('hizmetlerimiz')}
-                        >
-                            Hizmetlerimiz
-                    </Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link
-                            className='nav-link'
-                            activeClass="active"
-                            to="projelerimiz"
-                            spy={true}
-                            smooth={true}
-                            duration={100}
-                            onClick={() => handleItemClick('projelerimiz')}
-                        >
-                            Projelerimiz
-                    </Link>
-                    </li>
-                    <li className="nav-item">
-                    <Link
-                            className='nav-link last'
-                            activeClass="active"
-                            to="iletişim"
-                            spy={true}
-                            smooth={true}
-                            duration={100}
-                            onClick={() => handleItemClick('iletişim')}
-                        >
-                            İletişim
-                    </Link>
-                    </li>
-                </ul>
-            </div>
+    <nav className="bg-gray-800 text-white sticky top-0 z-50">
+      <div className="container mx-auto flex items-center justify-between p-4">
+        <img
+          src={logo}
+          alt="Logo"
+          width="400"
+          height="120"
+          className="object-contain"
+        />
+        <button
+          className="lg:hidden text-white"
+          type="button"
+          aria-controls="navbarMenu"
+          aria-expanded="false"
+        >
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          </svg>
+        </button>
+        <div className="hidden lg:flex flex-grow items-center justify-center space-x-6">
+          <Link
+            className={`nav-link ${
+              activeItem === "anasayfa" ? "text-yellow-400" : ""
+            }`}
+            to="anasayfa"
+            spy={true}
+            smooth={true}
+            duration={100}
+            onClick={() => handleItemClick("anasayfa")}
+          >
+            Ana Sayfa
+          </Link>
+          <Link
+            className={`nav-link ${
+              activeItem === "hakkımızda" ? "text-yellow-400" : ""
+            }`}
+            to="hakkımızda"
+            spy={true}
+            smooth={true}
+            duration={100}
+            onClick={() => handleItemClick("hakkımızda")}
+          >
+            Hakkımızda
+          </Link>
+          <Link
+            className={`nav-link ${
+              activeItem === "hizmetlerimiz" ? "text-yellow-400" : ""
+            }`}
+            to="hizmetlerimiz"
+            spy={true}
+            smooth={true}
+            duration={100}
+            onClick={() => handleItemClick("hizmetlerimiz")}
+          >
+            Hizmetlerimiz
+          </Link>
+          <Link
+            className={`nav-link ${
+              activeItem === "projelerimiz" ? "text-yellow-400" : ""
+            }`}
+            to="projelerimiz"
+            spy={true}
+            smooth={true}
+            duration={100}
+            onClick={() => handleItemClick("projelerimiz")}
+          >
+            Projelerimiz
+          </Link>
+          <Link
+            className={`nav-link ${
+              activeItem === "iletişim" ? "text-yellow-400" : ""
+            }`}
+            to="iletişim"
+            spy={true}
+            smooth={true}
+            duration={100}
+            onClick={() => handleItemClick("iletişim")}
+          >
+            İletişim
+          </Link>
         </div>
-        </nav>
-  )
+        <div
+          id="navbarMenu"
+          className="lg:hidden absolute top-16 left-0 w-full bg-gray-800 text-white flex flex-col items-center space-y-4 p-4"
+        >
+          <Link
+            className={`nav-link ${
+              activeItem === "anasayfa" ? "text-yellow-400" : ""
+            }`}
+            to="anasayfa"
+            spy={true}
+            smooth={true}
+            duration={100}
+            onClick={() => handleItemClick("anasayfa")}
+          >
+            Ana Sayfa
+          </Link>
+          <Link
+            className={`nav-link ${
+              activeItem === "hakkımızda" ? "text-yellow-400" : ""
+            }`}
+            to="hakkımızda"
+            spy={true}
+            smooth={true}
+            duration={100}
+            onClick={() => handleItemClick("hakkımızda")}
+          >
+            Hakkımızda
+          </Link>
+          <Link
+            className={`nav-link ${
+              activeItem === "hizmetlerimiz" ? "text-yellow-400" : ""
+            }`}
+            to="hizmetlerimiz"
+            spy={true}
+            smooth={true}
+            duration={100}
+            onClick={() => handleItemClick("hizmetlerimiz")}
+          >
+            Hizmetlerimiz
+          </Link>
+          <Link
+            className={`nav-link ${
+              activeItem === "projelerimiz" ? "text-yellow-400" : ""
+            }`}
+            to="projelerimiz"
+            spy={true}
+            smooth={true}
+            duration={100}
+            onClick={() => handleItemClick("projelerimiz")}
+          >
+            Projelerimiz
+          </Link>
+          <Link
+            className={`nav-link ${
+              activeItem === "iletişim" ? "text-yellow-400" : ""
+            }`}
+            to="iletişim"
+            spy={true}
+            smooth={true}
+            duration={100}
+            onClick={() => handleItemClick("iletişim")}
+          >
+            İletişim
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
 }
 
-export default Navbar
+export default Navbar;

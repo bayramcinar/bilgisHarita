@@ -1,84 +1,87 @@
 @media (min-width: 768px) {
-    #bar{
-        display: flex ;
-        justify-content: flex-end;
-    }
+  #bar {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
-nav{
-    background: linear-gradient(to bottom, rgba(174, 210, 255, 0.8), rgba(228, 241, 255, 0.8)) !important;
+.navbarUp nav {
+  background: linear-gradient(
+    to bottom,
+    rgba(174, 210, 255, 0.8),
+    rgba(228, 241, 255, 0.8)
+  ) !important;
 }
-.navbarLogo{
-    margin-left: 150px;
-}
-.nav-link{
-    font-size: 17px;
-    font-weight: 600;
-    margin-right: 15px;
-    transition: all 1s;
-}
-.last{
-    margin-right: 150px !important;
-}
-.nav-link:hover {
-    color: #3085C3;
-    transition: color 0.5s ease;
-}
-.active{
-    color: #3085C3 !important;
-    border-bottom: #3085C3 3px solid;
-    transition: color 0.3s;
+.navbarLogo {
+  margin-left: 150px;
 }
 .nav-link {
-    font-size: 17px;
-    font-weight: 600;
-    margin-right: 15px;
-    position: relative; 
+  font-size: 17px;
+  font-weight: 600;
+  margin-right: 15px;
+  transition: all 1s;
 }
-.navbar{
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+.last {
+  margin-right: 150px !important;
+}
+.nav-link:hover {
+  color: #3085c3;
+  transition: color 0.5s ease;
+}
+.active {
+  color: #3085c3 !important;
+  border-bottom: #3085c3 3px solid;
+  transition: color 0.3s;
+}
+.nav-link {
+  font-size: 17px;
+  font-weight: 600;
+  margin-right: 15px;
+  position: relative;
+}
+.navbarUp {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 .nav-link::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: #3085C3;
-    transform-origin: left bottom;
-    transform: scaleX(0);
-    transition: transform 0.5s ease;
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #3085c3;
+  transform-origin: left bottom;
+  transform: scaleX(0);
+  transition: transform 0.5s ease;
 }
 
 .nav-link:hover::before {
-    transform: scaleX(1);
+  transform: scaleX(1);
 }
-.nav-item{
-    cursor: pointer;
+.nav-item {
+  cursor: pointer;
 }
 .navbar-toggler:focus {
-    outline: none;
-    border: none !important;
-    box-shadow: none !important
+  outline: none;
+  border: none !important;
+  box-shadow: none !important;
 }
 .navbar-toggler {
-    border: none !important;
+  border: none !important;
 }
 button:focus:not(:focus-visible) {
-    outline: none;
+  outline: none;
 }
 @media (max-width: 768px) {
-    #bar{
-        justify-content: start;
-    }
+  #bar {
+    justify-content: start;
+  }
 }
 @media (max-width: 768px) {
-    .navbarLogo{
-        margin-left: 2%;
-        width: 300px !important;
-        height: 100px !important;
-    }
-    
+  .navbarLogo {
+    margin-left: 2%;
+    width: 300px !important;
+    height: 100px !important;
+  }
 }
