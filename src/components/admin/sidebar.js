@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Card,
@@ -20,7 +20,19 @@ import {
 import { CiLogout } from "react-icons/ci";
 
 function DashboardSidebar({ onSidebarClick }) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for sidebar visibility
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -28,21 +40,21 @@ function DashboardSidebar({ onSidebarClick }) {
 
   return (
     <>
-      {/* Toggle Button */}
-      <IconButton
-        color="primary"
-        onClick={toggleSidebar}
-        sx={{
-          display: { xs: "block", lg: "none" }, // Show button only on mobile
-          position: "absolute",
-          top: 16,
-          left: 16,
-        }}
-      >
-        <FaBars />
-      </IconButton>
+      {isMobile && (
+        <IconButton
+          color="primary"
+          onClick={toggleSidebar}
+          sx={{
+            display: { xs: "block", lg: "none" },
+            position: "absolute",
+            top: 16,
+            left: 16,
+          }}
+        >
+          <FaBars />
+        </IconButton>
+      )}
 
-      {/* Sidebar Drawer */}
       <Drawer
         variant="temporary"
         open={isSidebarOpen}
@@ -66,7 +78,7 @@ function DashboardSidebar({ onSidebarClick }) {
             <ListItem
               onClick={() => {
                 onSidebarClick("EditTexts");
-                toggleSidebar(); // Close the sidebar when an item is clicked
+                toggleSidebar();
               }}
               className="my-3 rounded-2xl shadow-md py-3 cursor-pointer hover:bg-[#f0f2f4] transition-all duration-300"
             >
@@ -79,7 +91,7 @@ function DashboardSidebar({ onSidebarClick }) {
               className="my-3 rounded-2xl shadow-md py-3 cursor-pointer hover:bg-[#f0f2f4] transition-all duration-300"
               onClick={() => {
                 onSidebarClick("ProjeTable");
-                toggleSidebar(); // Close the sidebar when an item is clicked
+                toggleSidebar();
               }}
             >
               <ListItemIcon>
@@ -91,7 +103,7 @@ function DashboardSidebar({ onSidebarClick }) {
               className="my-3 rounded-2xl shadow-md py-3 cursor-pointer hover:bg-[#f0f2f4] transition-all duration-300"
               onClick={() => {
                 onSidebarClick("HizmetTable");
-                toggleSidebar(); // Close the sidebar when an item is clicked
+                toggleSidebar();
               }}
             >
               <ListItemIcon>
@@ -103,7 +115,7 @@ function DashboardSidebar({ onSidebarClick }) {
               className="my-3 rounded-2xl shadow-md py-3 cursor-pointer hover:bg-[#f0f2f4] transition-all duration-300"
               onClick={() => {
                 onSidebarClick("Contact");
-                toggleSidebar(); // Close the sidebar when an item is clicked
+                toggleSidebar();
               }}
             >
               <ListItemIcon>
@@ -115,7 +127,7 @@ function DashboardSidebar({ onSidebarClick }) {
               className="my-3 rounded-2xl shadow-md py-3 cursor-pointer hover:bg-[#f0f2f4] transition-all duration-300"
               onClick={() => {
                 onSidebarClick("Logout");
-                toggleSidebar(); // Close the sidebar when an item is clicked
+                toggleSidebar();
               }}
             >
               <ListItemIcon>
@@ -127,7 +139,6 @@ function DashboardSidebar({ onSidebarClick }) {
         </Card>
       </Drawer>
 
-      {/* Desktop Sidebar */}
       <Card
         sx={{
           height: "100vh",
