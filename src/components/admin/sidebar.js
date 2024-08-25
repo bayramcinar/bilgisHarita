@@ -18,11 +18,13 @@ import {
   FaBars,
 } from "react-icons/fa";
 import { CiLogout } from "react-icons/ci";
+import { useNavigate } from "react-router-dom";
 
 function DashboardSidebar({ onSidebarClick }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
   const [activeItem, setActiveItem] = useState(null); // State to track active item
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,9 +42,17 @@ function DashboardSidebar({ onSidebarClick }) {
   };
 
   const handleItemClick = (item) => {
-    setActiveItem(item);
-    onSidebarClick(item);
-    if (isMobile) toggleSidebar(); // Close sidebar on mobile after item click
+    if (item === "Logout") {
+      // Clear session token
+      sessionStorage.removeItem("userToken"); // or localStorage.removeItem("token")
+
+      // Redirect to login page
+      navigate("/login");
+    } else {
+      setActiveItem(item);
+      onSidebarClick(item);
+      if (isMobile) toggleSidebar(); // Close sidebar on mobile after item click
+    }
   };
 
   const getItemClassName = (item) => {

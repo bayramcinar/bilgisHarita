@@ -4,9 +4,10 @@ import DashboardSidebar from "./sidebar";
 import HizmetTable from "./hizmetlerTable";
 import ProjelerTable from "./projelerTable";
 import ContactTable from "./iletişimTable";
+import MainPanel from "./mainPanel";
 
 function Dashboard() {
-  const [selectedComponent, setSelectedComponent] = useState("");
+  const [selectedComponent, setSelectedComponent] = useState("EditTexts");
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
@@ -32,7 +33,8 @@ function Dashboard() {
     <div className="flex">
       <DashboardSidebar onSidebarClick={handleSidebarClick} />
       {selectedComponent !== "" && (
-        <div className="flex-1 p-4">
+        <div className="flex-1">
+          {selectedComponent === "EditTexts" && <MainPanel />}
           {selectedComponent === "HizmetTable" && <HizmetTable />}
           {selectedComponent === "ProjeTable" && <ProjelerTable />}
           {selectedComponent === "ContactTable" && <ContactTable />}

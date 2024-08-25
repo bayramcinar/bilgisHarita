@@ -7,10 +7,34 @@ import mail from "../img/mail.png";
 import ig from "../img/ig.png";
 import fb from "../img/fb.png";
 import ContactForm from "./contacForm";
+import { firestore } from "../components/admin/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 function Contact() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+  const [aboutData, setAboutData] = useState({
+    address: "",
+    email: "",
+    facebook: "",
+    facebookAddress: "",
+    instagram: "",
+    instagramAddress: "",
+    phone: "",
+  });
+  useEffect(() => {
+    const fetchAboutData = async () => {
+      const docRef = doc(firestore, "textAndColor", "contactArea");
+      const docSnap = await getDoc(docRef);
 
+      if (docSnap.exists()) {
+        setAboutData(docSnap.data());
+      } else {
+        console.log("No such document!");
+      }
+    };
+
+    fetchAboutData();
+  }, []);
   useEffect(() => {
     const handleResize = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -42,31 +66,25 @@ function Contact() {
               <ContactBox
                 logo={adress}
                 name={"Adres"}
-                text={
-                  "Kılan-Fatih Mah. Şehit Süleyman Polat Sok. 2 Ulukışla 51920, Niğde"
-                }
+                text={aboutData.address}
               />
               <ContactBox
                 logo={phone}
                 name={"Telefon"}
-                text={"0539 510 38 51"}
+                text={aboutData.phone}
               />
-              <ContactBox
-                logo={mail}
-                name={"E-mail"}
-                text={"bilgisharitamuhendislik@gmail.com"}
-              />
+              <ContactBox logo={mail} name={"E-mail"} text={aboutData.email} />
               <ContactBox
                 logo={ig}
-                link={"https://www.instagram.com/bilgisharitamuhendislik/"}
+                link={aboutData.instagramAddress}
                 name={"Instagram"}
-                text={"@bilgisharitamuhendislik"}
+                text={aboutData.instagram}
               />
               <ContactBox
                 logo={fb}
-                link={"https://www.facebook.com/rb5161"}
+                link={aboutData.facebookAddress}
                 name={"Facebook"}
-                text={"Bilgiş Harita"}
+                text={aboutData.facebook}
               />
             </div>
             <ContactForm />

@@ -1,11 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../img/logo4.png";
 import { Link } from "react-scroll";
+import { firestore } from "../components/admin/firebase";
+import { doc, getDoc } from "firebase/firestore";
 import "../style/navbar.css";
 
 function Navbar() {
   const [activeItem, setActiveItem] = useState("");
-  const [isMenuOpen, setIsMenuOpen] = useState(false); // State for mobile menu visibility
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [navbarColors, setNavbarColors] = useState({
+    bg: "#2c3d55", // Default values
+    textColor: "#fff",
+    textColorHover: "#3085c3",
+  });
+
+  useEffect(() => {
+    const fetchNavbarColors = async () => {
+      const docRef = doc(firestore, "textAndColor", "navbar");
+      const docSnap = await getDoc(docRef);
+
+      if (docSnap.exists()) {
+        setNavbarColors(docSnap.data());
+      } else {
+        console.log("No such document!");
+      }
+    };
+
+    fetchNavbarColors();
+  }, []);
 
   const handleItemClick = (item) => {
     setActiveItem(item);
@@ -17,7 +39,10 @@ function Navbar() {
   };
 
   return (
-    <nav className="bg-gray-800 text-white sticky top-0 z-50">
+    <nav
+      className="sticky top-0 z-50"
+      style={{ backgroundColor: navbarColors.bg }}
+    >
       <div className="container mx-auto flex items-center justify-between p-4">
         <img
           src={logo}
@@ -27,11 +52,12 @@ function Navbar() {
           height="120"
         />
         <button
-          className="lg:hidden text-white"
+          className="lg:hidden"
+          style={{ color: navbarColors.textColor }}
           type="button"
           aria-controls="navbarMenu"
           aria-expanded={isMenuOpen}
-          onClick={toggleMenu} // Toggle menu visibility on click
+          onClick={toggleMenu}
         >
           <svg
             className="w-6 h-6"
@@ -46,138 +72,78 @@ function Navbar() {
               strokeWidth="2"
               d={
                 isMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"
-              } // Change icon based on menu state
+              }
             ></path>
           </svg>
         </button>
         <div className="hidden lg:flex flex-grow items-center justify-center space-x-6">
-          <Link
-            className={`nav-link ${
-              activeItem === "anasayfa" ? "text-yellow-400" : ""
-            }`}
-            to="anasayfa"
-            spy={true}
-            smooth={true}
-            duration={100}
-            onClick={() => handleItemClick("anasayfa")}
-          >
-            Ana Sayfa
-          </Link>
-          <Link
-            className={`nav-link ${
-              activeItem === "hakkımızda" ? "text-yellow-400" : ""
-            }`}
-            to="hakkımızda"
-            spy={true}
-            smooth={true}
-            duration={100}
-            onClick={() => handleItemClick("hakkımızda")}
-          >
-            Hakkımızda
-          </Link>
-          <Link
-            className={`nav-link ${
-              activeItem === "hizmetlerimiz" ? "text-yellow-400" : ""
-            }`}
-            to="hizmetlerimiz"
-            spy={true}
-            smooth={true}
-            duration={100}
-            onClick={() => handleItemClick("hizmetlerimiz")}
-          >
-            Hizmetlerimiz
-          </Link>
-          <Link
-            className={`nav-link ${
-              activeItem === "projelerimiz" ? "text-yellow-400" : ""
-            }`}
-            to="projelerimiz"
-            spy={true}
-            smooth={true}
-            duration={100}
-            onClick={() => handleItemClick("projelerimiz")}
-          >
-            Projelerimiz
-          </Link>
-          <Link
-            className={`nav-link ${
-              activeItem === "iletişim" ? "text-yellow-400" : ""
-            }`}
-            to="iletişim"
-            spy={true}
-            smooth={true}
-            duration={100}
-            onClick={() => handleItemClick("iletişim")}
-          >
-            İletişim
-          </Link>
+          {[
+            "anasayfa",
+            "hakkımızda",
+            "hizmetlerimiz",
+            "projelerimiz",
+            "iletişim",
+          ].map((item) => (
+            <Link
+              key={item}
+              className={`nav-link ${
+                activeItem === item ? "text-yellow-400" : ""
+              }`}
+              to={item}
+              spy={true}
+              smooth={true}
+              duration={100}
+              style={{
+                color: navbarColors.textColor,
+              }}
+              onMouseEnter={(e) =>
+                (e.target.style.color = navbarColors.textColorHover)
+              }
+              onMouseLeave={(e) =>
+                (e.target.style.color = navbarColors.textColor)
+              }
+              onClick={() => handleItemClick(item)}
+            >
+              {item.charAt(0).toUpperCase() + item.slice(1)}
+            </Link>
+          ))}
         </div>
         <div
           id="navbarMenu"
           className={`lg:hidden absolute top-16 left-0 w-full bg-gray-800 text-white flex flex-col items-center space-y-4 p-4 ${
             isMenuOpen ? "block" : "hidden"
-          }`} // Show or hide based on menu state
+          }`}
         >
-          <Link
-            className={`nav-link ${
-              activeItem === "anasayfa" ? "text-yellow-400" : ""
-            }`}
-            to="anasayfa"
-            spy={true}
-            smooth={true}
-            duration={100}
-            onClick={() => handleItemClick("anasayfa")}
-          >
-            Ana Sayfa
-          </Link>
-          <Link
-            className={`nav-link ${
-              activeItem === "hakkımızda" ? "text-yellow-400" : ""
-            }`}
-            to="hakkımızda"
-            spy={true}
-            smooth={true}
-            duration={100}
-            onClick={() => handleItemClick("hakkımızda")}
-          >
-            Hakkımızda
-          </Link>
-          <Link
-            className={`nav-link ${
-              activeItem === "hizmetlerimiz" ? "text-yellow-400" : ""
-            }`}
-            to="hizmetlerimiz"
-            spy={true}
-            smooth={true}
-            duration={100}
-            onClick={() => handleItemClick("hizmetlerimiz")}
-          >
-            Hizmetlerimiz
-          </Link>
-          <Link
-            className={`nav-link ${
-              activeItem === "projelerimiz" ? "text-yellow-400" : ""
-            }`}
-            to="projelerimiz"
-            spy={true}
-            smooth={true}
-            duration={100}
-            onClick={() => handleItemClick("projelerimiz")}
-          >
-            Projelerimiz
-          </Link>
-          <Link
-            className={`nav-link ${
-              activeItem === "iletişim" ? "text-yellow-400" : ""
-            }`}
-            to="iletişim"
-            spy={true}
-            smooth={true}
-            duration={100}
-            onClick={() => handleItemClick("iletişim")}
-          >
-            İletişim
-          </Link>
+          {[
+            "anasayfa",
+            "hakkımızda",
+            "hizmetlerimiz",
+            "projelerimiz",
+            "iletişim",
+          ].map((item) => (
+            <Link
+              key={item}
+              className={`nav-link ${
+                activeItem === item ? "text-yellow-400" : ""
+              }`}
+              to={item}
+              spy={true}
+              smooth={true}
+              duration={100}
+              style={{
+                color: navbarColors.textColor,
+              }}
+              onMouseEnter={(e) =>
+                (e.target.style.color = navbarColors.textColorHover)
+              }
+              onMouseLeave={(e) =>
+                (e.target.style.color = navbarColors.textColor)
+              }
+              onClick={() => handleItemClick(item)}
+            >
+              {item.charAt(0).toUpperCase() + item.slice(1)}
+            </Link>
+          ))}
         </div>
       </div>
     </nav>
