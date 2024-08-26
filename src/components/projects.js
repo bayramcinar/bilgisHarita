@@ -44,6 +44,7 @@ function Services() {
         ) : (
           services.map((service) => (
             <ProjectBox
+              coverImage={service.coverImageMetadata.url}
               key={service.id}
               video={service.fileMetadata.url}
               name={service.title}

@@ -12,7 +12,6 @@ import {
   Typography,
   Box,
   TextField,
-  Input,
   Button,
   Skeleton,
 } from "@mui/material";
@@ -34,6 +33,7 @@ import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 function ProjelerTable() {
   const [hizmetler, setHizmetler] = useState([]);
   const [fileMetadata, setFileMetadata] = useState(null); // Only metadata
+  const [coverImageMetadata, setCoverImageMetadata] = useState(null); // Cover image metadata
   const [newLessonName, setNewLessonName] = useState("");
   const [newHizmetImage, setNewHizmetImage] = useState("");
   const [editMode, setEditMode] = useState(false);
@@ -98,6 +98,36 @@ function ProjelerTable() {
     }
   };
 
+  const handleCoverImageChange = async (e) => {
+    const file = e.target.files[0];
+    Swal.fire({
+      icon: "info",
+      title: "Kapak Resmi Yükleniyor...",
+      html: "Lütfen bekleyin.",
+      allowOutsideClick: false,
+      didOpen: () => {
+        Swal.showLoading();
+      },
+    });
+
+    if (file) {
+      try {
+        const storageRef = ref(storage, `covers/${file.name}`);
+        await uploadBytes(storageRef, file);
+        const coverUrl = await getDownloadURL(storageRef);
+        setCoverImageMetadata({
+          name: file.name,
+          type: file.type,
+          size: file.size,
+          url: coverUrl, // Save the cover image URL
+        });
+        Swal.close();
+      } catch (error) {
+        console.error("Error uploading cover image:", error);
+      }
+    }
+  };
+
   const handleAddHizmet = async () => {
     if (!newLessonName || !fileMetadata) return;
 
@@ -120,6 +150,7 @@ function ProjelerTable() {
           size: fileMetadata.size,
           url: fileMetadata.url, // Save URL
         },
+        coverImageMetadata: coverImageMetadata, // Save cover image metadata
         createdAt: new Date(),
       });
 
@@ -150,6 +181,7 @@ function ProjelerTable() {
     setNewLessonName(hizmet.title);
     setNewHizmetImage(hizmet.fileMetadata.url);
     setFileMetadata(hizmet.fileMetadata); // Restore metadata
+    setCoverImageMetadata(hizmet.coverImageMetadata); // Restore cover image metadata
     toggleModal();
   };
 
@@ -176,6 +208,7 @@ function ProjelerTable() {
           size: fileMetadata.size,
           url: fileMetadata.url, // Update URL
         },
+        coverImageMetadata: coverImageMetadata, // Update cover image metadata
       });
       toggleModal();
       Swal.close();
@@ -241,9 +274,15 @@ function ProjelerTable() {
       }
     }
   };
+
   const handleRemoveImage = () => {
     setNewHizmetImage("");
   };
+
+  const handleRemoveCoverImage = () => {
+    setCoverImageMetadata(null);
+  };
+
   return (
     <Box
       sx={{
@@ -273,6 +312,7 @@ function ProjelerTable() {
             setEditMode(false);
             setNewLessonName("");
             setNewHizmetImage("");
+            setCoverImageMetadata(null);
             setFileMetadata(null);
             toggleModal();
           }}
@@ -287,6 +327,7 @@ function ProjelerTable() {
               <TableRow>
                 <TableCell>Proje ID</TableCell>
                 <TableCell>Başlık</TableCell>
+                <TableCell>Kapak Resmi</TableCell>
                 <TableCell>Video</TableCell>
                 <TableCell>Aksiyonlar</TableCell>
               </TableRow>
@@ -294,6 +335,9 @@ function ProjelerTable() {
             <TableBody>
               {Array.from(Array(rowsPerPage).keys()).map((index) => (
                 <TableRow key={index}>
+                  <TableCell>
+                    <Skeleton />
+                  </TableCell>
                   <TableCell>
                     <Skeleton />
                   </TableCell>
@@ -318,6 +362,7 @@ function ProjelerTable() {
               <TableRow>
                 <TableCell>Proje ID</TableCell>
                 <TableCell>Başlık</TableCell>
+                <TableCell>Kapak Resmi</TableCell>
                 <TableCell>Video</TableCell>
                 <TableCell>Aksiyonlar</TableCell>
               </TableRow>
@@ -336,6 +381,15 @@ function ProjelerTable() {
                       }}
                     >
                       {hizmet.title}
+                    </TableCell>
+                    <TableCell>
+                      {hizmet.coverImageMetadata?.url && (
+                        <img
+                          src={hizmet.coverImageMetadata.url}
+                          alt={hizmet.coverImageMetadata.name}
+                          style={{ width: "100px", height: "auto" }}
+                        />
+                      )}
                     </TableCell>
                     <TableCell>
                       {hizmet.fileMetadata?.url && (
@@ -402,7 +456,6 @@ function ProjelerTable() {
               </label>
               <input
                 id="file_input"
-                label="Proje Videosu"
                 className="flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-foreground file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                 type="file"
                 accept="video/mp4"
@@ -419,6 +472,39 @@ function ProjelerTable() {
                   <button
                     className="mt-2 px-3 py-1 bg-red-500 text-white rounded-md"
                     onClick={handleRemoveImage}
+                  >
+                    Kaldır
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+          <div className="w-full flex items-center justify-between mt-3">
+            <div>
+              <label
+                className="block mb-2 text-sm font-medium text-gray-700"
+                htmlFor="cover_input"
+              >
+                Kapak Resmi
+              </label>
+              <input
+                id="cover_input"
+                className="flex h-9 w-full rounded-md border border-input bg-background px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-foreground file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
+                type="file"
+                accept="image/*"
+                onChange={handleCoverImageChange}
+              />
+              {coverImageMetadata?.url && (
+                <div>
+                  <br />
+                  <img
+                    src={coverImageMetadata.url}
+                    alt="Cover"
+                    className="h-24 w-24"
+                  />
+                  <button
+                    className="mt-2 px-3 py-1 bg-red-500 text-white rounded-md"
+                    onClick={handleRemoveCoverImage}
                   >
                     Kaldır
                   </button>
