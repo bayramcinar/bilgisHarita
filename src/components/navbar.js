@@ -110,7 +110,8 @@ function Navbar() {
         </div>
         <div
           id="navbarMenu"
-          className={`lg:hidden absolute top-16 left-0 w-full bg-gray-800 text-white flex flex-col items-center space-y-4 p-4 ${
+          style={{ backgroundColor: navbarColors.bg }}
+          className={`lg:hidden absolute top-16 left-0 w-full text-white flex flex-col items-center space-y-4 p-4 ${
             isMenuOpen ? "block" : "hidden"
           }`}
         >
