@@ -42,8 +42,15 @@ function ContactTable() {
         id: doc.id,
         ...doc.data(),
       }));
-      console.log(fetchedHizmetler);
-      setHizmetler(fetchedHizmetler);
+      const sortedHizmetler = fetchedHizmetler.sort((a, b) => {
+        if (a.timestamp && b.timestamp) {
+          return b.timestamp.seconds - a.timestamp.seconds;
+        }
+        return 0;
+      });
+
+      console.log(sortedHizmetler);
+      setHizmetler(sortedHizmetler);
     } catch (error) {
       console.error("Error fetching hizmetler:", error);
     } finally {
