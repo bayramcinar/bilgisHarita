@@ -4,7 +4,7 @@ import "../style/projectBox.css";
 import "aos/dist/aos.css";
 import AOS from "aos";
 import { FaPlay } from "react-icons/fa"; // Import play icon from react-icons
-
+import playerImage from "../img/image.png";
 function ProjectBox({ video, name, coverImage }) {
   useEffect(() => {
     AOS.init({ duration: 1500 });
@@ -34,7 +34,7 @@ function ProjectBox({ video, name, coverImage }) {
                 style={{ objectFit: "cover" }}
               />
             )}
-
+            <img src={playerImage} className="lg:w-[20vw] w-full" />
             <div className="play-icon-overlay">
               <FaPlay size={25} color="white" />
             </div>
